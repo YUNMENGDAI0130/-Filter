@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <!--Fonts-->
+      <style>
+      body {
+        margin:0;
+        font-family: Myriad Pro;
+        }
+      </style>
+    <!--top navigation-->
+      <style>
+      .navbar {
+          overflow: hidden;
+          background-color: #333;
+          font-family: Arial;
+      }
+
+      .navbar a {
+        float: left;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        padding: 24px 28px;
+        text-decoration: none;
+      }
+
+      .dropdown {
+        float: left;
+        overflow: hidden;
+      }
+
+      .dropdown .dropbtn {
+        cursor: pointer;
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 24px 28px;
+        background-color: inherit;
+      }
+
+      .navbar a .dropdown .dropbtn: hover {
+        display: block;
+        background-color: orange;
+      }
+
+      .dropdown-content{
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #FFE5B4;
+      }
+
+      .show {
+        display: block;
+      }
+
+      input[type=text] {
+      	position:relative;
+        float: right;
+        width: 300px;
+        box-sizing: border-box;
+        border: 5px solid orange;
+        border-radius: 10px;
+        font-size: 16px;
+        background-color: white;
+        background-image: url('https://baltimorejewishlife.com/images/search-orange.gif');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding: 12px 12px 12px 50px;
+        -webkit-transition: width 1s ease-in-out;
+        transition: width 1s ease-in-out;
+      }
+
+      input[type=text]:focus {
+        width: 100%;
+      }
+
+      </style>
+    <!--Column-->
+      <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        /* Create two unequal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 10px;
+
+        }
+
+        .left {
+          width: 22%;
+        }
+
+        .right {
+          width: 78%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        </style>
+    <!--Filter elements, Varieties-->
+      <style>
+          input:checked {
+          height: 20px;
+          width: 20px;
+        }
+
+
+      .filterDiv {
+        float: left;
+        background-color: white;
+        color: darkgrey;
+        width: 20vw;
+        line-height: 5vw;
+        text-align: center;
+        margin: 2vw;
+        display: none;
+
+      }
+      .image {
+       display: block;
+       object-fit: cover;
+       width: 20vw;
+        height: 20vw;
+        overflow: hidden;
+        border-radius: 2vw;
+       }
+      .show {
+        display: block;
+      }
+
+      .container {
+        margin-top: 20px;
+        overflow: hidden;
+      }
+      </style>
+  <!--hover Image-->
+    <style>
+      .container1 {
+        position: relative;
+        width: 50%;
+      }
+
+      .image1 {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .overlay1 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #008CBA;
+        overflow: hidden;
+        width: 100%;
+        height: 0;
+        transition: .5s ease;
+      }
+
+      .container1:hover .overlay1 {
+        height: 100%;
+      }
+
+      .text1 {
+        white-space: nowrap; 
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        overflow: hidden;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+      }
+      </style>
+	<!--Display Window-->
+      <style>
+      * {box-sizing:border-box}
+      .mySlides {display:none}
+      .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: 0;
+      }
+      .text {
+        color: #ffffff;
+        font-size: 4vw;
+        font-weight: bold;
+        padding: .8vw 1.2vw;
+        position: relative;
+        bottom: 5.5vw;
+        width: 100%;
+        text-align: center;
+      }
+      .numbertext {
+        color: #C24641;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: relative;
+        top: 0;
+      }
+      .dot {
+        height: 1vw;
+        width: 1vw;
+        margin: 0 2px;
+        background-color: #C24641;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color .1s ease;
+      }
+
+      .active {
+        background-color: pink;
+      }
+      .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1s;
+      animation-name: fade;
+        animation-duration: 4s;
+      }
+
+      @-webkit-keyframes fade {
+        from {opacity: .4} 
+      to {opacity: 1}
+      }
+
+      @keyframes fade {
+       from {opacity: .4} 
+       to {opacity: 1}
+      }
+      @media only screen and (max-width: 300px) {
+        .text {font-size: 11px}
+      }
+      </style>
+  </head>
+
+  <body>
+  <br>
+  <h1>Dessert Stories</h1>
+  <p>——————make delicious desserts everyday——————</p>
+    <form>
+    <input type="text" name="search" placeholder="Search Recepies">
+    </form>
+    <br><br><br>
+
+  <!--Top Nav-->
+    <div class="navbar">
+    <a href="#home">Today's Stories</a>
+    <a href="#new">New</a>
+    <a href="./filter01.html">
+    <div class="dropdown">
+    	
+      <button class="dropbtn" onclick="myFunction()">Varieties
+        <img src="https://www.nordbahnhalle.org/wp-content/uploads/2017/05/select-arrow-down-red.png" style="height: 10px;">
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content" id="myDropdown">
+        <a onclick="filterSelection('all')" name="category"> All Varieties</a>
+        <a onclick="filterSelection('cake')" name="category"> Cake</a>
+        <a onclick="filterSelection('candy')" name="category">  Candies</a>
+        <a onclick="filterSelection('cookie')" name="category"> Cookies</a>
+        <a onclick="filterSelection('frozen')" name="category"> Frozens desserts</a>
+        <a onclick="filterSelection('filled')" name="category"> Filled cake</a>
+        <a onclick="filterSelection('jelly')" name="category"> Jelly</a>
+        <a onclick="filterSelection('pastry')" name="category"> Pastry</a>
+        <a onclick="filterSelection('pie')" name="category"> Pies</a>
+        <a onclick="filterSelection('soup')" name="category"> Sweet Soup</a>
+        </div>
+       </div>
+
+     <div class="dropdown">
+      <button class="dropbtn" onclick="myFunction1()">Origins
+          <img src="https://www.nordbahnhalle.org/wp-content/uploads/2017/05/select-arrow-down-red.png" style="height: 10px;">
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content" id="myDropdown01">
+        <a onclick="filterSelection('all')" name="category"> All Origins</a>
+        <a onclick="filterSelection('asian')" name="category"> Asian</a>
+        <a onclick="filterSelection('american')" name="category"> American</a>
+        <a onclick="filterSelection('european')" name="category"> European</a>
+        <a onclick="filterSelection('mideast')" name="category"> Middle East</a>
+        </div>
+       </div>
+    </div></a>
+
+    <script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    window.onclick = function(e) {
+      if (!e.target.matches('.dropbtn')) {
+        var myDropdown = document.getElementById("myDropdown");
+          if (myDropdown.classList.contains('show')) {
+            myDropdown.classList.remove('show');
+          }
+      }
+    }
+
+    function myFunction1() {
+        document.getElementById("myDropdown01").classList.toggle("show");
+    }
+
+    window.onclick = function(e) {
+      if (!e.target.matches('.dropbtn')) {
+        var myDropdown01 = document.getElementById("myDropdown01");
+          if (myDropdown01.classList.contains('show')) {
+            myDropdown01.classList.remove('show');
+          }
+      }
+    }
+    </script>
+    <!--Macaroon Portfolio-->
+  
+    <svg height="1vw" width="overflow:hidden">
+    <line x1="0" y1="0" x2="1980" y2="0" style="stroke:rgb(243, 229, 171);stroke-width:2px" />
+    </svg>
+    <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <img src="http://s1.1zoom.me/b5059/275/Sweets_Cakes_Plate_Piece_512250_1920x1080.jpg" style="width:100%">
+    <div class="text">Learn How to make a delicious Tiramisu Cake!</div>
+    </div>
+
+    <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <img src="http://timeinc.brightcove.com.edgesuite.net/rtmp_uds/1125866826/201709/1473/1125866826_5566860369001_5566852218001-vs.jpg?pubId=1125866826" style="width:100%">
+    <div class="text">This is the brownie</div>
+    </div>
+
+    <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <img src="https://wallpaperscraft.com/image/pastry_plate_tea_food_74972_1920x1080.jpg" style="width:100%">
+    <div class="text">We make Pastry!</div>
+   </div>
+
+   </div>
+   <br>
+
+    <div style="text-align:center">
+    <span class="dot"></span> 
+    <span class="dot"></span> 
+    <span class="dot"></span> 
+   </div>
+
+      <script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+         slides[i].style.display = "none";  
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}    
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+      setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+    </script>
+ </body>
+ </html>
