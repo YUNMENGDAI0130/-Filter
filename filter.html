@@ -1,37 +1,509 @@
-## Welcome to GitHub Pages
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Fonts-->
+      <style>
+      body {
+        margin:0;
+        font-family: Myriad Pro;
+        }
+      </style>
+    <!--top navigation-->
+      <style>
+      .navbar {
+          overflow: hidden;
+          background-color: #333;
+          font-family: Arial;
+      }
+      .navbar a {
+        float: left;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        padding: 24px 28px;
+        text-decoration: none;
+      }
+      .dropdown {
+        float: left;
+        overflow: hidden;
+      }
+      .dropdown .dropbtn {
+        cursor: pointer;
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 24px 28px;
+        background-color: inherit;
+      }
+      .navbar a .dropdown .dropbtn: hover {
+        display: block;
+        background-color: orange;
+      }
+      .dropdown-content{
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+      .dropdown-content a:hover {
+        background-color: #FFE5B4;
+      }
+      .show {
+        display: block;
+      }
+      input[type=text] {
+      	position:relative;
+        float: right;
+        width: 300px;
+        box-sizing: border-box;
+        border: 5px solid orange;
+        border-radius: 10px;
+        font-size: 16px;
+        background-color: white;
+        background-image: url('https://baltimorejewishlife.com/images/search-orange.gif');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding: 12px 12px 12px 50px;
+        -webkit-transition: width 1s ease-in-out;
+        transition: width 1s ease-in-out;
+      }
+      input[type=text]:focus {
+        width: 100%;
+      }
+      </style>
+    <!--Column-->
+      <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+        }
+        /* Create two unequal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 10px;
+        }
+        .left {
+          width: 22%;
+        }
+        .right {
+          width: 78%;
+        }
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        </style>
+    <!--Filter elements, Varieties-->
+      <style>
+          input:checked {
+          height: 20px;
+          width: 20px;
+        }
+      .filterDiv {
+        float: left;
+        background-color: white;
+        color: darkgrey;
+        width: 20vw;
+        line-height: 5vw;
+        text-align: center;
+        margin: 2vw;
+        display: none;
+      }
+      .image {
+       display: block;
+       object-fit: cover;
+       width: 20vw;
+        height: 20vw;
+        overflow: hidden;
+        border-radius: 2vw;
+       }
+      .show {
+        display: block;
+      }
+      .container {
+        margin-top: 20px;
+        overflow: hidden;
+      }
+      </style>
+  <!--hover Image-->
+    <style>
+      .container1 {
+        position: relative;
+        width: 50%;
+      }
+      .image1 {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .overlay1 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #008CBA;
+        overflow: hidden;
+        width: 100%;
+        height: 0;
+        transition: .5s ease;
+      }
+      .container1:hover .overlay1 {
+        height: 100%;
+      }
+      .text1 {
+        white-space: nowrap; 
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        overflow: hidden;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+      }
+      </style>
+  <!--Scroll Down Button-->
+    <style>
+    #topBtn {
+     display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 99;
+      border: none;
+      outline: none;
+      background-color: black;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 10px;
+    }
+      #topBtn:hover {
+       background-color: silver;
+      }
+    </style>
+</head>
 
-You can use the [editor on GitHub](https://github.com/YUNMENGDAI0130/-Filter/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+<body>
+  <br>
+  <h1>Dessert Stories</h1>
+  <p>——————make delicious desserts everyday——————</p>
+    <form>
+    <input type="text" name="search" placeholder="Search Recepies">
+    </form>
+    <br><br><br>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+  <!--Top Nav-->
+    <div class="navbar">
+    <a href="#home">Today's Stories</a>
+    <a href="./new.html">New</a>
+    <div class="dropdown">
+      <button class="dropbtn" onclick="myFunction()">Varieties
+        <img src="https://www.nordbahnhalle.org/wp-content/uploads/2017/05/select-arrow-down-red.png" style="height: 10px;">
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content" id="myDropdown">
+        <a onclick="filterSelection('all')" name="category"> All Varieties</a>
+        <a onclick="filterSelection('cake')" name="category"> Cake</a>
+        <a onclick="filterSelection('candy')" name="category">  Candies</a>
+        <a onclick="filterSelection('cookie')" name="category"> Cookies</a>
+        <a onclick="filterSelection('frozen')" name="category"> Frozens desserts</a>
+        <a onclick="filterSelection('filled')" name="category"> Filled cake</a>
+        <a onclick="filterSelection('jelly')" name="category"> Jelly</a>
+        <a onclick="filterSelection('pastry')" name="category"> Pastry</a>
+        <a onclick="filterSelection('pie')" name="category"> Pies</a>
+        <a onclick="filterSelection('soup')" name="category"> Sweet Soup</a>
+        </div>
+       </div>
 
-### Markdown
+     <div class="dropdown">
+      <button class="dropbtn" onclick="myFunction1()">Origins
+          <img src="https://www.nordbahnhalle.org/wp-content/uploads/2017/05/select-arrow-down-red.png" style="height: 10px;">
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content" id="myDropdown01">
+        <a onclick="filterSelection('all')" name="category"> All Origins</a>
+        <a onclick="filterSelection('asian')" name="category"> Asian</a>
+        <a onclick="filterSelection('american')" name="category"> American</a>
+        <a onclick="filterSelection('european')" name="category"> European</a>
+        <a onclick="filterSelection('mideast')" name="category"> Middle East</a>
+        </div>
+       </div>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+    </div>
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+    <script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+    window.onclick = function(e) {
+      if (!e.target.matches('.dropbtn')) {
+        var myDropdown = document.getElementById("myDropdown");
+          if (myDropdown.classList.contains('show')) {
+            myDropdown.classList.remove('show');
+          }
+      }
+    }
+    function myFunction1() {
+        document.getElementById("myDropdown01").classList.toggle("show");
+    }
+    window.onclick = function(e) {
+      if (!e.target.matches('.dropbtn')) {
+        var myDropdown01 = document.getElementById("myDropdown01");
+          if (myDropdown01.classList.contains('show')) {
+            myDropdown01.classList.remove('show');
+          }
+      }
+    }
+    </script>
+  <!--Filter Elements-->
+    <div class="row">
+    <div class="column left" style="background-color:orange;">
+      <h3> Find recipes by...</h3>
+      <form action="">
+  <!--Varities-->
+    <p>Varities</p>
+    <a style="font-size: 12px;">
+    <input id="check-all" type="checkbox" onclick="filterSelection('all')" name="category" checked> All<br>
+    <input id="check-cake" type="checkbox" onclick="filterSelection('cake')" name="category"> Cake<br>
+    <input id="check-candy" type="checkbox" onclick="filterSelection('candy')" name="category"> Chocolates and Candies<br>
+    <input id="check-cookie" type="checkbox" onclick="filterSelection('cookie')" name="category"> Cookies<br>
+    <input id="check-frozen" type="checkbox" onclick="filterSelection('frozen')" name="category"> Frozens desserts<br>
+    <input id="check-filled" type="checkbox" onclick="filterSelection('filled')" name="category"> Filled cake<br>
+    <input id="check-jelly" type="checkbox" onclick="filterSelection('jelly')" name="category"> Jelly<br>
+    <input id="check-pastry" type="checkbox" onclick="filterSelection('pastry')" name="category"> Pastry<br>
+    <input id="check-pie" type="checkbox" onclick="filterSelection('pie')" name="category"> Pies<br>
+    <input id="check-soup" type="checkbox" onclick="filterSelection('soup')" name="category"> Sweet Soup<br>
+    </a>
+  <!--Origins-->
+    <p>Origins</p>
+        <a style="font-size: 12px;">
+        <input id="check-asian" type="checkbox" onclick="filterSelection('asian')" name="category"> Asian<br>
+        <input id="check-american" type="checkbox" onclick="filterSelection('american')" name="category"> American<br>
+        <input id="check-european" type="checkbox" onclick="filterSelection('european')" name="category"> European<br>
+        <input id="check-mideast" type="checkbox" onclick="filterSelection('mideast')" name="category"> Middle East<br>
+        </a>
+  <!--Ingredients-->
+    <p>Ingredients</p>
+        <a  style="font-size: 12px;">
+        <input id="check-egg" type="checkbox" onclick="filterSelection('egg')" name="category"> Egg<br>
+        <input id="check-flower" type="checkbox" onclick="filterSelection('flower')" name="category"> Flower<br>
+        <input id="check-fruit" type="checkbox" onclick="filterSelection('fruit')" name="category"> Fruit<br>
+        <input id="check-milk" type="checkbox" onclick="filterSelection('milk')" name="category"> Milk<br>
+        <input id="check-nut" type="checkbox" onclick="filterSelection('nut')" name="category"> Nut<br>
+        </a>
+  <!--Tastes-->
+    <p>Tastes</p>
+        <a  style="font-size: 12px;">
+        <input id="check-sweet" type="checkbox" onclick="filterSelection('sweet')" name="category"> Sweet<br>
+        <input id="check-sour" type="checkbox" onclick="filterSelection('sour')" name="category"> Sour<br>
+        <input id="check-salty" type="checkbox" onclick="filterSelection('salty')" name="category"> Salty<br>
+        </a>
+      </div>
+  <!--Elements-->
+    <div class="column right" style="background-color:white;">
+      <div class="container">
+                   <div class="filterDiv cake european sweet egg">
+         <img src="http://upload-images.jianshu.io/upload_images/2916617-22989b2f4be174bd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Baumkuchen" class="image">
+        Baumkuchen
+          <div>523 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 6414 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
 
-- Bulleted
-- List
+           <div class="filterDiv cake european sweet nut milk">
+         <img src="https://i.pinimg.com/564x/c7/7d/ff/c77dffb8ee0647494d328dc85bc4a1cf.jpg" class="image">
+        Mont Blanc tart
+          <div>132 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 7111 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+           <div class="filterDiv european sweet milk egg">
+         <img src="http://www.eats-arts.com/tl_files/gallery_creator_albums/pomegranate/Crepes-2.jpg" class="image">
+        Crepe
+          <div>742 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 7237 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+           <div class="filterDiv cake american sweet nut egg milk">
+         <img src="https://i0.wp.com/bakingamoment.com/wp-content/uploads/2017/06/IMG_3459-tiramisu-cake-horizontal.jpg?resize=1080%2C720&ssl=1" class="image">
+        Tiramisu
+          <div>555 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 6323 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+           <div class="filterDiv pie american sour fruit jelly">
+         <img src="https://images.kitchenstories.io/recipeImages/30_22_TarteAuCitron_Step06a/30_22_TarteAuCitron_Step06a-large-landscape-200.jpg" class="image">
+        Lemon Pie
+          <div>423 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 4542 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+        <div class="filterDiv jelly asian sweet flower">
+          <img src="http://kantenya.com/wp-content/uploads/2017/07/mizushingenmochi.jpg" alt="Raindrop Cake" class="image">
+        Raindrop Cake
+          <div>112 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 16543 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+        <div class="filterDiv jelly asian sweet flower">
+          <img src="http://i3.meishichina.com/attachment/recipe/2014/12/12/20141212d4f73e40fea2b5e8.jpg@!p800" alt="Osmanthus Jelly" class="image">
+        Osmanthus Jelly
+          <div>76 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 23543 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"> </div></div>
+        <div class="filterDiv soup asian sweet sour fruit">
+          <img src="http://m.scxdf.com/uploads/allimg/130411/17-130411140535363.jpg" alt="Chilled Mango Sago Cream with Pomelo" class="image">
+        Mango Pomelo Soup
+          <div>152 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 23543 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+        <div class="filterDiv filled asian sweet flower">
+          <img src="http://pict2.ec-sites.jp/img/4745/498914/480/20160205220616.jpg" alt="Sakuramochi" class="image">
+        Sakuramochi
+          <div>432 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 76523 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+        <div class="filterDiv filled asian sour sweet fruit milk">
+          <img src="http://www.bombdaily.com/upload/news/original/c1b3d1ba08c5275b9b95996952904c16.jpg" alt="Strawberry Mochi" class="image">
+        Strawberry Mochi
+          <div>625 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 13435 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+        <div class="filterDiv colors asian sweet">
+          <img src="https://i.ytimg.com/vi/y8VwYx6XFwc/maxresdefault.jpg" alt="Taro Ball" class="image">
+        Taro Ball
+          <div>937 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 6435 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+        <div class="filterDiv jelly asian sweet flower">
+          <img src="http://www.ysglingshi.com/uploads/allimg/151216/7-151216114645460.jpg" alt="Grass Jelly" class="image">
+        Grass Jelly
+          <div>64 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 845 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+        <div class="filterDiv cake european sweet sour milk egg">
+         <img src="https://images.kitchenstories.io/recipeImages/R743-photo-final-4x3/R743-photo-final-4x3-large-landscape-200.jpg" alt="Cheesecake" class="image">
+        Cheesecake
+          <div>846 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 7843 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+        <div class="filterDiv cookie european sweet flower fruit nut">
+          <img src="https://images.kitchenstories.io/recipeImages/Baileys_Macarons_1x1/Baileys_Macarons_1x1-medium-landscape-200.jpg" alt="Macaroons" class="image">
+        Macaroons
+          <div>564 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 5744 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+        <div class="filterDiv cake european sweet egg milk">
+         <img src="https://images.kitchenstories.io/recipeImages/16_01_30_BiscuitrolleMitErdbeersahnefuellung_Final/16_01_30_BiscuitrolleMitErdbeersahnefuellung_Final-medium-landscape-200.jpg" alt="Swiss Roll" class="image">
+        Swiss Roll
+         <div>635 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 6437 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+        <div class="filterDiv cake european milk sour">
+          <img src="http://img.mp.itc.cn/upload/20170729/c32dbd16c4cc48069393718f7cb9b2d1_th.jpg" alt="Green Apple Moose" class="image">
+        Green Apple Moose
+          <div>654 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 5634 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+        <div class="filterDiv cake asian egg">
+          <img src="https://www.manusmenu.com/wp-content/uploads/2017/01/1-Nutella-Dorayaki-1-1-of-1.jpg" alt="Dorayaki" class="image">
+        Dorayaki
+          <div>532 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 3433 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+        <div class="filterDiv cake european candy sweet">
+         <img src="https://images.food52.com/JntTmRmfZUMQnGBy2w1SYjG1H50=/753x502/da4e9848-c871-4e8a-a715-f80ef03fa8bd--raspberry-souffle-08.jpg" alt="Soufflé" class="image">
+        Soufflé
+          <div>4232 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 3343 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+        <div class="filterDiv cookie american milk salty">
+         <img src="https://www.aheadofthyme.com/wp-content/uploads/2017/04/four-quick-and-easy-ritz-cracker-recipes-9-edit.jpg" alt="Ritz" class="image">
+        Cracker
+          <div>32 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 443 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+        <div class="filterDiv cake american sweet fruit">
+         <img src="https://images.kitchenstories.io/recipeImages/R713-photo-final-4x3/R713-photo-final-4x3-large-landscape-200.jpg" alt="Shortcake" class="image">
+        Shortcake
+          <div>542 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 53543 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+        <div class="filterDiv cake american sweet fruit egg">
+         <img src="https://i0.wp.com/siftingthroughlife.com/wp-content/uploads/2016/09/Fruit-Tart-3.jpg" alt="fruit tart" class="image">
+        Fruit Tart
+          <div>742 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 7237 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+         <div class="filterDiv pie filled american sour fruit egg">
+         <img src="https://images.kitchenstories.io/recipeImages/16_01_122_SourCherryPie_Final4x3/16_01_122_SourCherryPie_Final4x3-medium-landscape-200.jpg" alt="cherry pie" class="image">
+        Cherry Pie
+          <div>424 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 2432 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+           <div class="filterDiv cake asian sweet egg">
+         <img src="https://cdn.hungryonion.org/original/2X/c/cf6b5dc3ad7d10f046e5eff8f99dee3b28147d20.jpg" alt="Crepe Cake" class="image">
+        Crepe Cake
+          <div>523 comments<img src="https://www.drupal.org/files/issues/comment_6.png" style="height:12px; width: 12px"> 7344 likes<img src="http://www.clker.com/cliparts/H/J/r/l/7/T/grey-heart-hi.png" style="height:12px; width: 12px"></div></div>
+      </div>
 
-1. Numbered
-2. List
+      <script>
+      var toShow = {};
+      filterSelection("all");
+      function filterSelection(c) {
+        if (toShow[c]) {
+            toShow[c] = false;
+        } else {
+            toShow[c] = true;
+        }
+        if (c != "all" && toShow["all"]) {
+            for (var i in toShow) {
+                toShow[i] = false;
+            }
+            toShow[c] = true;
+        }
+        var x, i;
+        x = document.getElementsByClassName("filterDiv");
+        if (toShow["all"]) {
+          for (i = 0; i < x.length; i++) {
+            w3RemoveClass(x[i], "show");
+            w3AddClass(x[i], "show");
+          }
+          var categories = document.getElementsByName("category");
+          for (var i=0; i<categories.length; ++i) {
+            var current = categories[i];
+            if (current.tagName == "INPUT") {
+              current.checked = true;
+            }
+          }
+        } else {
+          for (i = 0; i < x.length; i++) {
+            w3RemoveClass(x[i], "show");
+            for (var filterName in toShow) {
+              if (toShow[filterName] == true) {
+                if (x[i].className.indexOf(filterName) > -1) {
+                  w3AddClass(x[i], "show");
+                  break;
+                }
+              }
+            }
+          }
+          var categories = document.getElementsByName("category");
+          for (var i=0; i<categories.length; ++i) {
+            var current = categories[i];
+            if (current.tagName == "INPUT") {
+              var currentId = current.id.replace("check-", "");
+              current.checked = (toShow[currentId]);
+            }
+          }
+        }
+      }
+      function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+        }
+      }
+      function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);
+          }
+        }
+        element.className = arr1.join(" ");
+      }
+      </script>
+    </div>
+  <!--Scroll Down Button-->
+    <button onclick="topFunction()" id="topBtn" title="Go to top">Back to Top</button>
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/YUNMENGDAI0130/-Filter/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+       if (document.body.scrollTop > 20 || document.documentElement.  scrollTop > 20) {
+         document.getElementById("topBtn").style.display = "block";
+       } else {
+         document.getElementById("topBtn").style.display = "none";
+       }
+    }
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+       document.body.scrollTop = 0;
+       document.documentElement.scrollTop = 0;
+    }
+    </script>
+  </body>
+</html>
